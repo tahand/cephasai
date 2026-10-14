@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cybercore"
+version = "0.1.0"
+description = "Plug and play AI model wrappers for tabular machine learning."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "polars>=1.0",
+    "pyarrow>=15",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+tuning = ["optuna>=3.5"]
+showcase = ["streamlit>=1.40", "altair>=5"]
+dev = ["pytest>=8", "optuna>=3.5", "streamlit>=1.40", "altair>=5"]
+
+[tool.setuptools.packages.find]
+include = ["cybercore*"]
+
+[tool.setuptools.package-data]
+"cybercore.datasets" = ["*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
